@@ -119,3 +119,33 @@ func computeSum(array : [Int]) -> Int{
 }
 
 print(computeSum(array: [2,5,7]))
+
+
+func reverseArray(array : [Int]) -> [Int]{
+    return array.reversed()
+}
+
+print(reverseArray(array: [1,2,3]))
+
+func uniqueLetters(inString : String) -> Bool{
+    for letter in inString{
+        for checkLetter in inString{
+            if (letter == checkLetter){
+                return false
+            }
+        }
+    }
+    
+    return true
+}
+
+print(uniqueLetters(inString: "Helo"))
+
+func charAppears(inString : String){
+    var charCount : Int = 0
+    for letter in inString{
+        
+    }
+    
+}
+
