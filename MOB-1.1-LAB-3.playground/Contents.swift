@@ -86,3 +86,36 @@ func powerOfTwo(n : [Double]){
 
 }
 
+func getNumberOfStudents() -> String{
+    var coursesAndStudents = [("MOB", 30), ("BEW", 40), ("FEW", 30), ("DS", 40)]
+    var message : String = ""
+    
+    //message = "There are" + coursesAndStudents["MOB"]! + "students in the " + coursesAndStudents[30]! + "track"
+    message=""
+    
+    return message
+
+}
+print(getNumberOfStudents())
+
+func checkEnds(array : [Int]){
+    for index in array{
+        if(index == array[0]){
+            print(index)
+        }
+    }
+    
+}
+
+func computeSum(array : [Int]) -> Int{
+    var sum : Int = 0
+    for index in array{
+        sum += index
+        
+    }
+    
+    return sum
+    
+}
+
+print(computeSum(array: [2,5,7]))
