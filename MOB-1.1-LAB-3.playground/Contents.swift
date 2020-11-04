@@ -57,6 +57,7 @@ for color in colors{
     
 }
 
+print("Color count function:")
 for color in colorCount{
     print(color)
 }
@@ -73,6 +74,7 @@ func fibo(n : Int ) -> [Int] {
     return nums
     
 }
+print("Fibonacci Function:")
 print(fibo(n : 4))
 
 func powerOfTwo(n : [Double]){
@@ -86,12 +88,14 @@ func powerOfTwo(n : [Double]){
 
 }
 
+print("Get num of students function:")
 func getNumberOfStudents() -> String{
     var coursesAndStudents = [("MOB", 30), ("BEW", 40), ("FEW", 30), ("DS", 40)]
     var message : String = ""
     
-    //message = "There are" + coursesAndStudents["MOB"]! + "students in the " + coursesAndStudents[30]! + "track"
-    message=""
+    for (key, value) in coursesAndStudents{
+        message +=  "There are \(value) students in the \(key) track. \n"
+    }
     
     return message
 
@@ -111,7 +115,6 @@ func computeSum(array : [Int]) -> Int{
     var sum : Int = 0
     for index in array{
         sum += index
-        
     }
     
     return sum
@@ -121,16 +124,32 @@ func computeSum(array : [Int]) -> Int{
 print(computeSum(array: [2,5,7]))
 
 
-func reverseArray(array : [Int]) -> [Int]{
-    return array.reversed()
+func reverseArray(arr : [Int]) -> [Int]{
+    var loop_num = 0
+    var answer : [Int] = []
+    while loop_num < arr.count{
+        answer.append(arr[arr.count - loop_num - 1])
+        loop_num += 1
+    }
+    
+    return answer
 }
 
-print(reverseArray(array: [1,2,3]))
+print(reverseArray(arr: [1,2,3]))
 
 func uniqueLetters(inString : String) -> Bool{
+ 
+    var letterString : [Character] = []
     for letter in inString{
-        for checkLetter in inString{
-            if (letter == checkLetter){
+        var letterCounter : Int = 0
+        print(letter)
+        letterString.append(letter)
+        for index in inString{
+            print(index)
+            if(index == letter){
+                letterCounter += 1
+            }
+            if(letterCounter >= 2){
                 return false
             }
         }
@@ -141,11 +160,47 @@ func uniqueLetters(inString : String) -> Bool{
 
 print(uniqueLetters(inString: "Helo"))
 
-func charAppears(inString : String){
-    var charCount : Int = 0
+func charAppears(inString : String, c : Character) -> Int{
+    var letterString : [Character] = []
+    var letterCounter : Int = 0
+    var message : String = ""
+    
     for letter in inString{
+        letterString.append(letter)
+        print(letter)
         
+        if(letter == c){
+            letterCounter += 1
+            
+        }
+        print(letterCounter)
     }
+    
+    return letterCounter
+
+}
+
+print(charAppears(inString : "racecar", c : "r"))
+
+func addEvents() -> [[Int]]{
+    var arr = [[Int]]()
+    for row in 0...4{
+        var add : Int = 0
+        for col in 0...4{
+            //if(row%2 == 0)
+            if(row == 0){
+                arr.append([0,0])
+                
+            }else{
+                add += row
+                arr.append([add,col])
+            }
+        }
+
+    }
+    
+    return arr
     
 }
 
+print(addEvents())
