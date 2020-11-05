@@ -1,5 +1,3 @@
-//: A UIKit based Playground for presenting user interface
-  
 import UIKit
 
 var colorHex: [String:String] = [
@@ -12,8 +10,8 @@ var colorHex: [String:String] = [
     "black" : "#000000"
 ]
 
-for color in colorHex{
-    print(color)
+for (color, code) in colorHex{
+    print("The color is \(color) and its hex code is \(code)")
 }
     
 var colors = ["red", "orange", "purple", "pink", "blue", "red", "green", "red", "blue", "purple", "pink" , "purple", "purple"]
@@ -57,7 +55,7 @@ for color in colors{
     
 }
 
-print("Color count function:")
+print("Color count:")
 for color in colorCount{
     print(color)
 }
@@ -77,18 +75,19 @@ func fibo(n : Int ) -> [Int] {
 print("Fibonacci Function:")
 print(fibo(n : 4))
 
-func powerOfTwo(n : [Double]){
-    
-    for index in n{
-        var power : Double = pow(index,2)
-        if(power <= index){
+func powerOfTwo(n : Int){
+    var power : Decimal = 0
+    for index in 1...n{
+        power = pow(Decimal(index),2)
+        if(power <= Decimal(n)){
             print(power)
         }
     }
-
 }
 
-print("Get num of students function:")
+print("Power of Two Function:")
+print(powerOfTwo(n : 16))
+
 func getNumberOfStudents() -> String{
     var coursesAndStudents = [("MOB", 30), ("BEW", 40), ("FEW", 30), ("DS", 40)]
     var message : String = ""
@@ -100,16 +99,21 @@ func getNumberOfStudents() -> String{
     return message
 
 }
+
+print("Get num of students function:")
 print(getNumberOfStudents())
 
-func checkEnds(array : [Int]){
-    for index in array{
-        if(index == array[0]){
-            print(index)
-        }
+func checkEnds(arr : [Int]) -> String{
+    if(arr[0] == arr[arr.count-1]){
+        return "The ends are equal"
+    }else{
+        return "The ends are not equal"
     }
     
 }
+
+print("Check Ends Function:")
+print(checkEnds(arr: [5,4,4,5]))
 
 func computeSum(array : [Int]) -> Int{
     var sum : Int = 0
@@ -121,20 +125,21 @@ func computeSum(array : [Int]) -> Int{
     
 }
 
+print("Compute Sum Function:")
 print(computeSum(array: [2,5,7]))
 
-
 func reverseArray(arr : [Int]) -> [Int]{
-    var loop_num = 0
-    var answer : [Int] = []
-    while loop_num < arr.count{
-        answer.append(arr[arr.count - loop_num - 1])
-        loop_num += 1
+    var index = 0
+    var reversedArr : [Int] = []
+    while index < arr.count{
+        reversedArr.append(arr[arr.count - index - 1])
+        index += 1
     }
     
-    return answer
+    return reversedArr
 }
 
+print("Reverse Array Function:")
 print(reverseArray(arr: [1,2,3]))
 
 func uniqueLetters(inString : String) -> Bool{
@@ -142,10 +147,8 @@ func uniqueLetters(inString : String) -> Bool{
     var letterString : [Character] = []
     for letter in inString{
         var letterCounter : Int = 0
-        print(letter)
         letterString.append(letter)
         for index in inString{
-            print(index)
             if(index == letter){
                 letterCounter += 1
             }
@@ -158,49 +161,51 @@ func uniqueLetters(inString : String) -> Bool{
     return true
 }
 
-print(uniqueLetters(inString: "Helo"))
+print("Unique Letters Function:")
+print(uniqueLetters(inString: "keyboard"))
 
 func charAppears(inString : String, c : Character) -> Int{
     var letterString : [Character] = []
     var letterCounter : Int = 0
-    var message : String = ""
     
     for letter in inString{
         letterString.append(letter)
-        print(letter)
-        
         if(letter == c){
             letterCounter += 1
-            
         }
-        print(letterCounter)
     }
     
     return letterCounter
 
 }
 
+print("Character Appears function:")
 print(charAppears(inString : "racecar", c : "r"))
 
-func addEvents() -> [[Int]]{
+func addEvents() -> Int{
     var arr = [[Int]]()
+    var sumOfRows : Int = 0
     for row in 0...4{
-        var add : Int = 0
+        var multipleNum : Int = 0
+        var colArr : [Int] = []
         for col in 0...4{
-            //if(row%2 == 0)
+            if(row % 2 == 0){
+                sumOfRows += col
+            }
             if(row == 0){
-                arr.append([0,0])
-                
+                colArr.append(0)
             }else{
-                add += row
-                arr.append([add,col])
+                multipleNum += row
+                colArr.append(multipleNum)
             }
         }
-
+        arr.append(colArr)
     }
     
-    return arr
+    print(arr)
+    return sumOfRows
     
 }
 
+print("Add Events Function:")
 print(addEvents())
